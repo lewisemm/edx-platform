@@ -462,7 +462,7 @@ class MongoPersistenceBackend:
             if not self.with_mysql_subclass:
                 course_index['last_update'] = datetime.datetime.now(pytz.utc)
             # Insert the new index:
-            self.course_index.insert_one(course_index)
+            self.course_index.delete_one(course_index)
 
     def update_course_index(self, course_index, from_index=None, course_context=None):
         """
